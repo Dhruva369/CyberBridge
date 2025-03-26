@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}Emergency Contacts - CyberBridge{% endblock %}
+
+{% block main_class %}{% endblock %} 
+
+{% block content %}
+<section class="emergency-container">
+    <h1 class="section-title">Emergency Contacts 🚨</h1>
+    <p class="section-subtitle">Immediate help for cybercrime incidents in India</p>
+
+    <!-- Vertical Contact List -->
+    <div class="contacts-list">
+        <!-- National Cybercrime Helpline -->
+        <a href="tel:1930" class="contact-card clickable-card">
+            <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="contact-details">
+                <h3>National Cybercrime Helpline</h3>
+                <span class="contact-number">1930</span>
+                <p>24/7 toll-free number for reporting cybercrimes</p>
+            </div>
+        </a>
+
+        <!-- Cybercrime Police Email -->
+        <a href="mailto:cybercrime@police.gov.in" class="contact-card clickable-card" target="_blank">
+            <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+                <h3>Cybercrime Police</h3>
+                <span class="contact-email">cybercrime@police.gov.in</span>
+                <p>Official email for digital evidence submission</p>
+            </div>
+        </a>
+
+        <!-- CERT-In -->
+        <a href="tel:1800114949" class="contact-card clickable-card">
+            <div class="contact-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="contact-details">
+                <h3>CERT-In</h3>
+                <span class="contact-number">1800-11-4949</span>
+                <p>Indian Computer Emergency Response Team</p>
+            </div>
+        </a>
+
+        <!-- National Portal (External Link) -->
+        <a href="https://cybercrime.gov.in" class="contact-card clickable-card" target="_blank">
+            <div class="contact-icon">
+                <i class="fas fa-globe"></i>
+            </div>
+            <div class="contact-details">
+                <h3>Cyber Crime Portal</h3>
+                <span class="contact-link">cybercrime.gov.in</span>
+                <p>National Cyber Crime Reporting Portal</p>
+            </div>
+        </a>
+
+        <!-- State-Wise Cybercrime Contacts -->
+        {% set contacts = [
+            {"name": "Hyderabad Cyber Crime Police Station", "number": "8712665171", "region": "Hyderabad"},
+            {"name": "Andhra Pradesh Cybercrime Cell", "number": "8331043255", "region": "Andhra Pradesh"},
+            {"name": "Arunachal Pradesh Cybercrime Cell", "number": "9436040703", "region": "Arunachal Pradesh"},
+            {"name": "Assam Cybercrime Cell", "number": "0361-2521618", "region": "Assam"},
+            {"name": "Bihar Cybercrime Cell", "number": "0612-2238098", "region": "Bihar"},
+            {"name": "Chandigarh Cybercrime Cell", "number": "0172-2700056", "region": "Chandigarh"},
+            {"name": "Chhattisgarh Cyber Crime Cell", "number": "9479191785", "region": "Chhattisgarh"},
+            {"name": "Delhi Cyber Crime Cell", "number": "011-20892633", "region": "Delhi"},
+            {"name": "Goa Cybercrime Cell", "number": "0832-2420883", "region": "Goa"},
+            {"name": "Gujarat Cybercrime Cell", "number": "079-23250798", "region": "Gujarat"},
+            {"name": "Haryana Cybercrime Cell", "number": "0172-2524058", "region": "Haryana"},
+            {"name": "Himachal Pradesh Cybercrime Cell", "number": "0177-2620331", "region": "Himachal Pradesh"},
+            {"name": "Jammu & Kashmir Cybercrime Cell", "number": "0191-25822926", "region": "Jammu & Kashmir"},
+            {"name": "Jharkhand Cybercrime Cell", "number": "0651-2220060", "region": "Jharkhand"},
+            {"name": "Karnataka Cybercrime Cell", "number": "080-22942475", "region": "Karnataka"},
+            {"name": "Kerala Cybercrime Cell", "number": "0471-2300042", "region": "Kerala"},
+            {"name": "Madhya Pradesh Cybercrime Cell", "number": "0755-2770248", "region": "Madhya Pradesh"},
+            {"name": "Maharashtra Cybercrime Cell", "number": "022-22160080", "region": "Maharashtra"},
+            {"name": "Manipur Cybercrime Cell", "number": "0385-2444888", "region": "Manipur"},
+            {"name": "Meghalaya Cybercrime Cell", "number": "9402519391", "region": "Meghalaya"},
+            {"name": "Mizoram Cybercrime Cell", "number": "0389-2334682", "region": "Mizoram"},
+            {"name": "Nagaland Cybercrime Cell", "number": "6009308003", "region": "Nagaland"},
+            {"name": "Odisha Cybercrime Cell", "number": "0674-2913100", "region": "Odisha"},
+            {"name": "Punjab Cybercrime Cell", "number": "0172-2226258", "region": "Punjab"},
+            {"name": "Rajasthan Cybercrime Cell", "number": "0141-2821741", "region": "Rajasthan"},
+            {"name": "Sikkim Cybercrime Cell", "number": "8695622134", "region": "Sikkim"},
+            {"name": "Tamil Nadu Cybercrime Cell", "number": "044-29580300", "region": "Tamil Nadu"},
+            {"name": "Telangana Cybercrime Cell", "number": "040-29320049", "region": "Telangana"},
+            {"name": "Tripura Cybercrime Cell", "number": "0381-2376979", "region": "Tripura"},
+            {"name": "Uttar Pradesh Cybercrime Cell", "number": "0522-2390538", "region": "Uttar Pradesh"},
+            {"name": "Uttarakhand Cybercrime Cell", "number": "0135-2655900", "region": "Uttarakhand"},
+            {"name": "West Bengal Cybercrime Cell", "number": "033-23248072", "region": "West Bengal"}
+        ] %}
+
+        {% for contact in contacts %}
+        <a href="tel:{{ contact.number }}" class="contact-card clickable-card">
+            <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-details">
+                <h3>{{ contact.name }}</h3>
+                <span class="contact-number">{{ contact.number }}</span>
+                <p>Cybercrime complaints in {{ contact.region }}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

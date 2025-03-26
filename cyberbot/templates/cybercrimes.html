@@ -1,0 +1,275 @@
+{% extends 'base.html' %}
+
+{% block title %}Cybercrimes Explained - CyberBridge{% endblock %}
+
+{% block content %}
+<section class="cybercrimes-container">
+    <h1 class="section-title">Cybercrimes Explained <i class="fas fa-user-secret"></i></h1>
+    <p class="section-subtitle">Understanding digital threats in modern world</p>
+
+    <div class="cybercrime-list">
+        <!-- 1. Credit Card Fraud -->
+        <div class="crime-card">
+            <div class="crime-content">
+                <div class="crime-image">
+                    <img src="{{ url_for('static', filename='imgs/credit-card-fraud.jpg') }}" alt="Credit Card Fraud">
+                </div>
+                <div class="crime-details">
+                    <h3>Credit Card Fraud</h3>
+                    <p>Credit card fraud happens when someone steals your card details and uses them to make unauthorized transactions. This can occur through phishing emails, fake websites, or data breaches where financial information gets leaked. Scammers also use skimming devices on ATMs and POS machines to capture card data. Many victims realize it only after seeing unexpected transactions on their bank statements. Always enable transaction alerts and avoid sharing OTPs with anyone.</p>
+                    <div class="crime-stats">
+                        <span><i class="fas fa-chart-line"></i> 12,000+ cases in 2023</span>
+                        <span><i class="fas fa-indian-rupee-sign"></i> ₹60+ crore lost</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Cyberbullying -->
+        <div class="crime-card">
+            <div class="crime-content">
+                <div class="crime-image">
+                    <img src="{{ url_for('static', filename='imgs/cyberbullying.jpg') }}" alt="Cyberbullying illustration">
+                </div>
+                <div class="crime-details">
+                    <h3>Cyberbullying</h3>
+                    <p>Cyberbullying is the use of digital platforms to harass, threaten, or humiliate someone. It includes sending hateful messages, spreading false rumors, sharing private photos without consent, or publicly shaming someone online. Victims often face mental stress, anxiety, and social isolation. This is common on social media, messaging apps, and online forums. Indian laws, such as the IT Act and IPC, penalize cyberbullying, and victims can report incidents to cybercrime cells or helplines.</p>
+                    <div class="crime-stats">
+                        <span><i class="fas fa-chart-line"></i> 37% teenagers affected</span>
+                        <span><i class="fas fa-gavel"></i> Covered under IPC Section 507</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Cyber Extortion (NEW) -->
+        <div class="crime-card">
+            <div class="crime-content">
+                <div class="crime-image">
+                    <img src="{{ url_for('static', filename='imgs/cyber-extortion.jpg') }}" alt="Cyber Extortion">
+                </div>
+                <div class="crime-details">
+                    <h3>Cyber Extortion</h3>
+                    <p>Criminals threaten to release sensitive data or compromise systems unless a ransom is paid. This includes sextortion (threatening to leak intimate photos), DDoS attacks on businesses, and ransomware that encrypts files. Attackers often demand payment in cryptocurrency to avoid tracking. Many small businesses and individuals fall victim, with some paying repeatedly as attackers keep demanding more.</p>
+                    <div class="crime-stats">
+                        <span><i class="fas fa-chart-line"></i> 300% increase since 2020</span>
+                        <span><i class="fas fa-gavel"></i> IPC Section 384</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Cyber Stalking -->
+        <div class="crime-card">
+            <div class="crime-content">
+                <div class="crime-image">
+                    <img src="{{ url_for('static', filename='imgs/cyber-stalking.jpg') }}" alt="Cyber Stalking">
+                </div>
+                <div class="crime-details">
+                    <h3>Cyber Stalking</h3>
+                    <p>Cyberstalking is the repeated use of the internet, email, or social media to harass or intimidate someone. This includes sending threatening messages, spreading false information, or tracking someone’s activities without their consent. Many cyberstalkers use fake profiles to target victims, especially women. The psychological impact on victims can be severe, causing anxiety and fear. Indian laws provide protection, and complaints can be filed with cybercrime cells.</p>
+                    <div class="crime-stats">
+                        <span><i class="fas fa-chart-line"></i> 5,000+ complaints in 2023</span>
+                        <span><i class="fas fa-gavel"></i> Punishable under IPC & IT Act</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Dark Web Markets (NEW) -->
+        <div class="crime-card">
+            <div class="crime-content">
+                <div class="crime-image">
+                    <img src="{{ url_for('static', filename='imgs/dark-web.jpg') }}" alt="Dark Web Markets">
+                </div>
+                <div class="crime-details">
+                    <h3>Dark Web Markets</h3>
+                    <p>Illegal online marketplaces selling stolen data, drugs, weapons, and hacking tools. These hidden websites operate on encrypted networks like Tor. Indian credit card details and Aadhaar data are frequently sold for as little as ₹500. Law enforcement monitors these markets, but new ones constantly emerge. Purchasing from these sites can lead to malware infections or legal consequences.</p>
+                    <div class="crime-stats">
+                        <span><i class="fas fa-chart-line"></i> 2M+ stolen cards listed</span>
+                        <span><i class="fas fa-gavel"></i> IT Act Section 66F</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Data Breach -->
+        <div class="crime-card">
+            <div class="crime-content">
+                <div class="crime-image">
+                    <img src="{{ url_for('static', filename='imgs/data-breach.jpg') }}" alt="Data Breach">
+                </div>
+                <div class="crime-details">
+                    <h3>Data Breach</h3>
+                    <p>A data breach occurs when unauthorized individuals gain access to confidential information, such as personal details, passwords, or financial data. This often happens due to weak security systems in organizations or phishing attacks on users. Cybercriminals sell stolen data on the dark web, leading to financial fraud and identity theft. Companies are required to take strong security measures to protect customer data from such breaches.</p>
+                    <div class="crime-stats">
+                        <span><i class="fas fa-chart-line"></i> 20 million+ records leaked in 2023</span>
+                        <span><i class="fas fa-shield-alt"></i> Govt agencies & banks targeted</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Digital Piracy -->
+        <div class="crime-card">
+            <div class="crime-content">
+                <div class="crime-image">
+                    <img src="{{ url_for('static', filename='imgs/digital-piracy.jpg') }}" alt="Digital Piracy illustration">
+                </div>
+                <div class="crime-details">
+                    <h3>Digital Piracy</h3>
+                    <p>Digital piracy refers to the illegal copying, distribution, or downloading of copyrighted content like movies, music, software, and books without permission. Websites offering free or cracked versions of paid content violate intellectual property laws. This harms creators, industries, and governments by causing revenue losses. Many countries, including India, have strict laws against piracy, with penalties including heavy fines and imprisonment. Legal streaming and licensed software help combat this issue.</p>
+                    <div class="crime-stats">
+                        <span><i class="fas fa-chart-line"></i> ₹20,000 cr loss annually</span>
+                        <span><i class="fas fa-gavel"></i> IT Act & Copyright Act</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Fake Job Scams -->
+        <div class="crime-card">
+            <div class="crime-content">
+                <div class="crime-image">
+                    <img src="{{ url_for('static', filename='imgs/fake-job-scam.jpg') }}" alt="Fake Job Scams">
+                </div>
+                <div class="crime-details">
+                    <h3>Fake Job Scams</h3>
+                    <p>Scammers create fake job postings on social media or job portals, promising high salaries and asking for an advance payment for training, registration, or visa processing. Victims, hoping for a good job, end up losing money. Most fake job offers come with unrealistic salaries or require payments before hiring. Always verify job offers directly with the company and never transfer money for job applications.</p>
+                    <div class="crime-stats">
+                        <span><i class="fas fa-chart-line"></i> ₹100+ crore scammed</span>
+                        <span><i class="fas fa-user"></i> 15,000+ victims in 2023</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. Financial Fraud -->
+        <div class="crime-card">
+            <div class="crime-content">
+                <div class="crime-image">
+                    <img src="{{ url_for('static', filename='imgs/financial-fraud.jpg') }}" alt="Financial Fraud">
+                </div>
+                <div class="crime-details">
+                    <h3>Financial Fraud</h3>
+                    <p>Financial fraud includes scams such as fake investment schemes, UPI fraud, and unauthorized bank transfers. Fraudsters often trick people into sharing OTPs or clicking malicious links, leading to huge financial losses. Some scams involve fake customer service numbers where victims unknowingly share sensitive banking details. Always verify investment schemes and avoid clicking on untrusted links.</p>
+                    <div class="crime-stats">
+                        <span><i class="fas fa-chart-line"></i> 82% of cyber complaints</span>
+                        <span><i class="fas fa-indian-rupee-sign"></i> ₹200+ crore lost in 2023</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. Identity Theft -->
+        <div class="crime-card">
+            <div class="crime-content">
+                <div class="crime-image">
+                    <img src="{{ url_for('static', filename='imgs/identity-theft.jpg') }}" alt="Identity Theft illustration">
+                </div>
+                <div class="crime-details">
+                    <h3>Identity Theft</h3>
+                    <p>Identity theft happens when someone steals your personal information, like Aadhaar number, PAN card details, or banking credentials, to commit fraud. Criminals use this stolen data to open bank accounts, take loans, or even impersonate you online. This often happens through phishing emails, fake calls, or data breaches. Victims may face financial losses, legal trouble, or damage to their reputation. To stay safe, never share sensitive details, use strong passwords, and enable two-factor authentication for extra security.</p>
+                    <div class="crime-stats">
+                        <span><i class="fas fa-chart-line"></i> 42% of cyber complaints</span>
+                        <span><i class="fas fa-gavel"></i> IT Act Section 66C</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- 14. KYC Fraud (NEW) -->
+         <div class="crime-card">
+            <div class="crime-content">
+                <div class="crime-image">
+                    <img src="{{ url_for('static', filename='imgs/kyc-fraud.jpg') }}" alt="KYC Fraud">
+                </div>
+                <div class="crime-details">
+                    <h3>KYC Fraud</h3>
+                    <p>Scammers call/SMS claiming your bank account/wallet will be blocked unless KYC is updated. They send phishing links to fake banking portals that steal login credentials. Some install malware through fake "KYC apps" that drain bank accounts. The RBI has repeatedly warned that banks never call for KYC updates, yet thousands fall victim monthly, especially elderly citizens.</p>
+                    <div class="crime-stats">
+                        <span><i class="fas fa-chart-line"></i> 15,000+ cases monthly</span>
+                        <span><i class="fas fa-gavel"></i> RBI alerts issued</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 16. Online Shopping Fraud (NEW) -->
+        <div class="crime-card">
+            <div class="crime-content">
+                <div class="crime-image">
+                    <img src="{{ url_for('static', filename='imgs/shopping-fraud.jpg') }}" alt="Online Shopping Fraud">
+                </div>
+                <div class="crime-details">
+                    <h3>Online Shopping Fraud</h3>
+                    <p>Fake e-commerce websites offer luxury goods at unbelievable discounts. Victims receive counterfeit products or nothing at all. Some scams involve "order confirmation" calls demanding extra payments for delivery. Social media stores with stolen product images are particularly risky. The Consumer Protection Act covers such frauds, but recovering money is difficult once transferred.</p>
+                    <div class="crime-stats">
+                        <span><i class="fas fa-chart-line"></i> ₹200+ crore annual loss</span>
+                        <span><i class="fas fa-gavel"></i> Consumer Court applicable</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 17. QR Code Scams -->
+        <div class="crime-card">
+            <div class="crime-content">
+                <div class="crime-image">
+                    <img src="{{ url_for('static', filename='imgs/qr-scam.jpg') }}" alt="QR Code Scams">
+                </div>
+                <div class="crime-details">
+                    <h3>QR Code Scams</h3>
+                    <p>Fraudsters replace legitimate QR codes at shops with their own or send fake payment requests. Scanning malicious QR codes can lead to instant money transfers from your account. Some scams involve fake "scan to win" offers that install malware. UPI users are particularly vulnerable, with many realizing they've paid instead of receiving money only after the transaction completes.</p>
+                    <div class="crime-stats">
+                        <span><i class="fas fa-chart-line"></i> ₹5-10K average loss</span>
+                        <span><i class="fas fa-gavel"></i> NPCI warnings issued</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="legal-section">
+        <h2><i class="fas fa-scale-balanced"></i> Indian Cyber Laws</h2>
+        <div class="law-cards">
+            <div class="law-card">
+                <h4>1. IT Act, 2000</h4>
+                <p>The Information Technology Act, 2000 is India's primary law dealing with cybercrime and electronic commerce. It covers unauthorized access, data protection, and penalties for hacking, identity theft, and online fraud. This law ensures a legal framework for secure online transactions.</p>
+            </div>
+            <div class="law-card">
+                <h4>2. IPC Section 420</h4>
+                <p>This section of the Indian Penal Code punishes cheating and fraud, including online scams, fake job offers, and lottery frauds. Conviction under this section can result in imprisonment for up to 7 years and a fine.</p>
+            </div>
+            <div class="law-card">
+                <h4>3. Section 66A (Struck Down)</h4>
+                <p>Earlier used to punish offensive online messages, but was declared unconstitutional by the Supreme Court in 2015. Despite this, some officials still misuse it to target individuals for social media posts.</p>
+            </div>
+            <div class="law-card">
+                <h4>4. Section 66C</h4>
+                <p>This law punishes identity theft and fraudulent use of someone's personal information, such as Aadhaar, PAN, or banking details. The punishment includes imprisonment of up to 3 years and fines.</p>
+            </div>
+            <div class="law-card">
+                <h4>5. Section 67</h4>
+                <p>Punishes the publishing or transmission of obscene content in electronic form, including adult content, revenge porn, or inappropriate images. Offenders can face up to 5 years in jail and a ₹10 lakh fine.</p>
+            </div>
+            <div class="law-card">
+                <h4>6. Section 72</h4>
+                <p>This law protects privacy and prohibits unauthorized disclosure of personal information. Violators who misuse confidential data can face imprisonment and heavy fines.</p>
+            </div>
+            <div class="law-card">
+                <h4>7. Section 69</h4>
+                <p>Gives the government the power to monitor, intercept, or decrypt digital information if national security is at risk. This law is often used in cases of cyber terrorism and surveillance.</p>
+            </div>
+            <div class="law-card">
+                <h4>8. Personal Data Protection Bill</h4>
+                <p>An upcoming law designed to regulate the collection, storage, and processing of personal data by companies to protect user privacy and prevent data misuse.</p>
+            </div>
+            <div class="law-card">
+                <h4>9. Section 43A (Data Protection)</h4>
+                <p>Holds companies liable for failing to protect sensitive personal data (financial, health, biometrics). Requires compensation to victims if negligence is proven.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
