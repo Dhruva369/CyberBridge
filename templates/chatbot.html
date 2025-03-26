@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Chatbot - CyberBridge{% endblock %}
+
+{% block main_class %}{% endblock %} 
+
+{% block content %}
+<section class="chatbot-container">
+    <h1 class="section-title">CyberBridge Chatbot 🤖</h1>
+    <!-- <p class="section-subtitle">Ask me anything about cybercrimes in India!</p> -->
+
+    <!-- Chat Interface -->
+    <div id="chatbox">
+        <div id="chat-history" class="chat-history">
+            <!-- Messages appear here -->
+        </div>
+
+        <!-- User Input -->
+        <div class="input-container">
+            <input type="text" id="user-input" class="user-input" placeholder="Type your message..." />
+            <button id="send-button" class="send-button"><i class="fas fa-paper-plane"></i> Send</button>
+        </div>
+    </div>
+</section>
+
+<style>
+    .message-content {
+        white-space: pre-line;
+        line-height: 1.6;
+    }
+    .message-content h3 {
+        color: #2d158a;
+        margin: 15px 0 10px 0;
+    }
+    body.dark-mode .message-content h3 {
+        color: #ddd1c7;
+        margin: 15px 0 10px 0;
+    }
+    .message-content ul {
+        padding-left: 20px;
+        list-style-type: none;
+    }
+    .message-content li:before {
+        content: "•";
+        color: #2d158a;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+    body.dark-mode .message-content li:before {
+        color: #ddd1c7;
+    }
+    .message-content hr {
+        border: 0;
+        height: 1px;
+        background: #ddd1c7;
+        margin: 15px 0;
+    }
+</style>
+<!-- JavaScript for Chatbot -->
+<script src="{{ url_for('static', filename='chatbot.js') }}"></script>
+{% endblock %}

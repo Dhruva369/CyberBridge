@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Cyber Awareness{% endblock %}
+
+{% block main_class %}{% endblock %} 
+
+{% block content %}
+<section class="hero">
+    <h1>Stay Safe Online, Stay Informed.</h1>
+    <p>Learn about cyber threats, access emergency contacts, and use our AI-powered chatbot for guidance.</p>
+</section>
+
+<!-- Square Card Buttons in a Single Row -->
+<section class="card-buttons">
+    <a href="{{ url_for('chatbot') }}" class="card-button">
+        <i class="fas fa-robot"></i>
+        <span>Chatbot</span>
+    </a>
+
+    <a href="{{ url_for('emergency') }}" class="card-button">
+        <i class="fas fa-phone-alt"></i>
+        <span>Emergency</span>
+    </a>
+
+    <a href="{{ url_for('cybercrimes') }}" class="card-button">
+        <i class="fas fa-user-secret"></i>
+        <span>Cybercrimes</span>
+    </a>
+
+    <a href="{{ url_for('resources') }}" class="card-button">
+        <i class="fas fa-book"></i>
+        <span>Resources</span>
+    </a>
+</section>
+
+<section class="about">
+    <h2>About Us</h2>
+    <p>We aim to create a safer digital space by providing awareness, emergency resources, and AI-driven support.</p>
+</section>
+{% endblock %}
