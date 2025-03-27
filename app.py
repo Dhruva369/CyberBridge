@@ -161,7 +161,7 @@ def chat():
     session["chat_history"] = session["chat_history"][-MAX_HISTORY:]
 
     # Check if query is about emergency contacts
-    emergency_keywords = ["emergency", "helpline", "contact", "number", "report"]
+    emergency_keywords = ["emergency", "helpline", "contact", "number"]
     is_emergency_query = any(keyword in user_input.lower() for keyword in emergency_keywords)
 
     if is_emergency_query:
