@@ -4,6 +4,11 @@
         "number": "1930",
         "description": "24/7 helpline for cybercrime complaints in India",
         "regions": ["all"]
+    },{
+        "name": "Police Helpline Number",
+        "number": "100",
+        "description": "For complaints in India",
+        "regions": ["all"]
     },
         {
         "name": "Hyderabad Cyber Crime Police Station",
