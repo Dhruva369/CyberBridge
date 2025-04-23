@@ -227,7 +227,7 @@ def chat():
                 Only respond to cybercrime-related questions. If a user asks unrelated questions, politely decline. 
                 NEVER EVER RESPOND IN CHINESE, NOT EVEN A SIGNLE CHARACTER. Always respond in English. 
                 EMERGENCY CONTACTS:
-                - When asked about emergency numbers, only mention Indian national helpline and (100) for polica and (102) for ambulance
+                - When asked about emergency numbers, first only mention (1930) for Indian national helpline and then (100) for polica and (102) for ambulance
                 - Never give out any other contact number apart from the ones I mentionedd here, never invent or guess contact numbers
                 - If unsure about a region, provide the Indian national helpline (1930)
                 If the user asks about:
