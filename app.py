@@ -124,7 +124,7 @@ def cybercrimes():
 def resources():
     return render_template("resources.html")
 
-# ✅ New Routes (Minimal Change)
+
 @app.route("/documents")
 def documents():
     return render_template("documents.html")
@@ -145,46 +145,74 @@ def clear_session():
 
 @app.route("/api/chat", methods=["POST"])
 def chat():
-    
     user_input = request.json.get("message")
     if not user_input:
         return jsonify({"error": "No message provided"}), 400
 
-    # Initialize chat history if not already in session
     if "chat_history" not in session:
         session["chat_history"] = []
 
-    # Add user message to history
     session["chat_history"].append({"role": "user", "content": user_input})
-    
-    # Keep only last MAX_HISTORY messages
     session["chat_history"] = session["chat_history"][-MAX_HISTORY:]
 
-    # Check if query is about emergency contacts
+    # If bot is expecting a region name
+    if session.get("awaiting_state"):
+        region_input = user_input.strip().lower()
+        region_contacts = get_emergency_contacts(region_input)
+
+        if region_contacts and all("all" not in contact['regions'] for contact in region_contacts):
+            contacts_text = "\n".join(
+                f"{contact['name']}: {contact['number']} ({contact['description']})"
+                for contact in region_contacts
+            )
+            bot_response = f"Here are the emergency contacts for {region_input.title()}:\n\n{contacts_text}"
+        else:
+            national_contacts = get_emergency_contacts("all")
+            national_text = "\n".join(
+                f"{contact['name']}: {contact['number']} ({contact['description']})"
+                for contact in national_contacts
+            )
+            bot_response = f"I'm sorry, I couldn't identify your state.\n\nHere is the national cybercrime helpline:\n\n{national_text}"
+
+        session["awaiting_state"] = False
+        formatted_response = format_response(bot_response)
+        return jsonify({"response": formatted_response})
+
+    #Detect if emergency query
     emergency_keywords = ["emergency", "helpline", "contact", "number"]
     is_emergency_query = any(keyword in user_input.lower() for keyword in emergency_keywords)
 
     if is_emergency_query:
-        # Extract region if mentioned
         region = None
         for contact in EMERGENCY_CONTACTS:
-            for r in contact['regions']:
-                if r != 'all' and r in user_input.lower():
+            for r in contact["regions"]:
+                if r != "all" and r in user_input.lower():
                     region = r
                     break
+            if region:
+                break
 
-        contacts = get_emergency_contacts(region)
-        if contacts:
+        if region:
+            contacts = get_emergency_contacts(region)
             contacts_text = "\n".join(
-                f"{contact['name']}: {contact['number']} ({contact['description']})" 
+                f"{contact['name']}: {contact['number']} ({contact['description']})"
                 for contact in contacts
             )
-            bot_response = f"""Here are the relevant emergency contacts:\n\n{contacts_text}\n\nPlease call the appropriate number for your location."""
-            
-            formatted_response = format_response(bot_response)
-            return jsonify({"response": formatted_response})
+            bot_response = f"Here are the relevant emergency contacts:\n\n{contacts_text}\n\nPlease call the appropriate number for your location."
+        else:
+            national_contacts = get_emergency_contacts("all")
+            national_text = "\n".join(
+                f"{contact['name']}: {contact['number']} ({contact['description']})"
+                for contact in national_contacts
+            )
+            bot_response = f"National Emergency Helpline:\n\n{national_text}\n\nWhich Indian state are you from?"
+            session["awaiting_state"] = True
+            session.modified = True
 
+        formatted_response = format_response(bot_response)
+        return jsonify({"response": formatted_response})
 
+    #Otherwise, proceed with chatbot logic
     headers = {
         "Authorization": f"Bearer {API_KEY}",
         "Content-Type": "application/json",
@@ -195,19 +223,19 @@ def chat():
         "model": "deepseek/deepseek-r1-distill-qwen-14b:free",
         "messages": [
             {"role": "system", "content": """
-                You are a chatbot that provides accurate, precise, and detailed information about cybercrimes in India. 
+                Think of yourself as an expert that provides accurate, precise, and detailed but medium-length information about cybercrimes, laws & reporting procedures in India. 
                 Only respond to cybercrime-related questions. If a user asks unrelated questions, politely decline. 
-                Never respond in Chinese. Always respond in English. 
+                NEVER EVER RESPOND IN CHINESE, NOT EVEN A SIGNLE CHARACTER. Always respond in English. 
                 EMERGENCY CONTACTS:
-                - When asked about emergency numbers, ALWAYS use the official contacts from our database
-                - Never invent or guess contact numbers
-                - If unsure about a region, provide the national helpline (1930)
+                - When asked about emergency numbers, only mention Indian national helpline and (100) for polica and (102) for ambulance
+                - Never give out any other contact number apart from the ones I mentionedd here, never invent or guess contact numbers
+                - If unsure about a region, provide the Indian national helpline (1930)
                 If the user asks about:
-                - Cyber laws, provide details from the Indian Constitution, IT Act, IPC.
+                - Cyber laws, check the official websites and provide details from the official Indian Constitution, IT Act, IPC.
                 - Evidence collection, explain how to collect & preserve digital evidence.
                 - Punishments, mention relevant sections from IT Act & IPC.
                 - Reporting cybercrime, provide step-by-step instructions.
-                - Helpline numbers, mention 1930 only. Only give Indian cybercrime cell number, don't give 市公安局 Cybercrime Cell. if tthe user asks for specific cybercrime cell number in dia then search in our database file emergency_contacts.json.
+                - Helpline numbers, mention 1930 only. Only give Indian cybercrime cell number, don't give 市公安局 Cybercrime Cell. 
                 - Safety measures, list actionable steps.
                 1. NEVER use Markdown (no #, *, -, `, _)
                 2. For lists: Use numbers like 1) 2) 3)
@@ -226,7 +254,6 @@ def chat():
             """}
         ] + session["chat_history"]
     }
-
     try:
         response = requests.post(API_URL, headers=headers, json=payload)
         response.raise_for_status()
